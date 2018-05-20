@@ -10,9 +10,9 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require admin-lte/bootstrap/css/bootstrap.min.css
- *= require admin-lte/dist/css/AdminLTE.css
- *= require admin-lte/dist/css/skins/skin-blue.min.css
+ *= require bootstrap.min.css
+ *= require AdminLTE.css
+ *= require skin-blue.min.css
  *= require_self
  *= require_tree .
  */

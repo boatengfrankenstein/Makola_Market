@@ -53,20 +53,19 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Default url options when generating urls for action mailer
-  config.action_mailer.default_url_options = { host: 'localhost' }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
   # Email delivery method
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address: ENV['SMTP_ENDPOINT'],
-    authentication: :login,
-    user_name: ENV['SMTP_USERNAME'],
-    password: ENV['SMTP_PASSWORD'],
-    tls: true,
-    enable_starttls_auto: true,
-    port: ENV['SMTP_PORT']
-  }
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'localhost:3000',
+    :user_name            => 'countrybus1@gmail.com',
+    :password             => 'Dmoney4lif',
+    :authentication       => :plain,
+    :enable_starttls_auto => true  }
 
   # SES Email configuration
 =begin  

@@ -23,6 +23,11 @@
         <div class="box-footer">
           <%= f.submit 'Sign In', class: 'btn btn-primary' %>
         </div>
+        <div>
+ <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+<% end -%>
+        </div>
         <% if devise_mapping.omniauthable? %>
           <div class="box-footer">
             <% resource_class.omniauth_providers.each do | provider | %>
