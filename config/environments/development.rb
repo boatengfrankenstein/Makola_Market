@@ -53,7 +53,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Default url options when generating urls for action mailer
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.default_url_options = { host: 'saharamarket.herokuapp.com' }
 
   # Email delivery method
   config.action_mailer.delivery_method = :smtp
@@ -61,7 +61,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
-    :domain               => 'localhost:3000',
+    :domain               => 'saharamarket.herokuapp.com',
     :user_name            => 'countrybus1@gmail.com',
     :password             => 'Dmoney4lif',
     :authentication       => :plain,
