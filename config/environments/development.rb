@@ -45,6 +45,12 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  config.action_mailer.perform_deliveries = true
+
+
+
+
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
@@ -59,11 +65,11 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
+    :address              => "smtp.sendgrid.net",
     :port                 => 587,
     :domain               => 'saharamarket.herokuapp.com',
-    :user_name            => 'countrybus1@gmail.com',
-    :password             => 'Dmoney4lif',
+    :user_name            => 'app97172692@heroku.com',
+    :password             => 'adkyy5op2411',
     :authentication       => :plain,
     :enable_starttls_auto => true  }
 
