@@ -75,6 +75,23 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
+
+  # Default url options when generating urls for action mailer
+  config.action_mailer.default_url_options = { host: 'saharamarket.herokuapp.com' }
+
+  # Email delivery method
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'saharamarket.herokuapp.com',
+    :user_name            => 'countrybus1@gmail.com',
+    :password             => 'Dmoney4lif',
+    :authentication       => :plain,
+    :enable_starttls_auto => true  }
+    
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
