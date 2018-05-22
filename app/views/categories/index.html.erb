@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Categories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+ <ul> 
+  <% @categories.each do |c| %> 
+    <li> 
+      <%= link_to c.name, :controller => "categories", :action => "show", :id => c.id -%>
+      <%="(#{c.classifieds.count})"%> 
+    </li> 
+  <% end %> 
+</ul>
+  </tbody>
+</table>
+
+<br>
+<h1>New Category</h1>
+
+
+
+<%= render 'form', category: @category %>
+<p id="notice"><%= notice %></p>
+
+<h1>Categories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+ <ul> 
+  <% @categories.each do |c| %> 
+    <li> 
+      <%= link_to c.name, :controller => "categories", :action => "show", :id => c.id -%>
+      <%="(#{c.classifieds.count})"%> 
+    </li> 
+  <% end %> 
+</ul>
+  </tbody>
+</table>
+
+<br>
+<h1>New Category</h1>
+
+
+
+<%= render 'form', category: @category %>

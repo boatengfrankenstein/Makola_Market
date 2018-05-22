@@ -1,0 +1,25 @@
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+   
+    <% if @classifieds.blank? %> 
+	<p>There are not any ads currently in the system.</p> 
+<% else %> 
+	<p>These are the current classified ads in our system</p> 
+
+		<% @classifieds.each do |c| %> 
+    <tr>
+			<td><%= link_to c.title, classified_url(:id => c.id) -%></td>
+			<td>	<small> <%= link_to 'Edit', {:action => "edit", :id => c.id} %></small></td>
+			<td>	<small><%= link_to 'delete', c, method: :delete, data: { confirm: 'Are you sure?' } %></small> </td>
+		<% end %> 
+	</tr> 
+<% end %> 
+  </tbody>
+</table>

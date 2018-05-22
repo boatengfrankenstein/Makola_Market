@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @classified.title %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= number_to_currency(@classified.price,{:unit => "$", :separator => ".", :delimiter => ","}) %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @classified.location %>
+</p>
+<%= debug @classified %>
+
+<strong>Category: </strong> <%= link_to @classified.category.name,:controller =>'categories', :action => 'show', :id=>@classified.category.id%><br/> 
+
+<p>
+  <strong>Description:</strong>
+  <%= @classified.description %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @classified.email %>
+</p>
+<p>
+<strong>Date Posted:</strong>
+<%= distance_of_time_in_words_to_now(@classified.created_at) %><br />
+<strong>Last updated:</strong>
+<%= distance_of_time_in_words(@classified.updated_at, Time.now) %></p>
+</p>
+
+<p>Interested?
+Contact <%= mail_to @classified.email %></p>
+
+
+
+
+
+
+
+<%= link_to 'Edit', edit_classified_url(@classified) %> |
+<%= link_to 'Back', :controller=>'classifieds',:action=>'index' %>
+
+
+<!--
+# Submits title=X&description=Y
+form_with(url: different_path, class: 'something', id: 'specific') do |form|
+  form.text_field :title, 'This has is the value of the title'
+
+  form.text_area :description, class: 'No value has been supplied here'
+
+  form.fields(:permission) do |fields|
+    # on/off instead of positional parameters for setting values
+    fields.check_box :admin, on: 'yes', off: 'no'
+  end
+
+-->

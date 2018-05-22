@@ -1,0 +1,45 @@
+<%= form_with(model: classified, local: true) do |form| %>
+  <% if classified.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(classified.errors.count, "error") %> prohibited this classified from being saved:</h2>
+
+      <ul>
+      <% classified.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :classified_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price, id: :classified_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location, id: :classified_location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :classified_description %>
+  </div>
+
+<p><label for="classified_category">Category</label><br/> 
+<%=collection_select(:classified, :category_id, Category.all.collect,:id, :name) %></p>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :classified_email %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Create" %>
+  </div>
+<% end %>

@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col">
+    <h1>Classifieds</h1>
+    <% @classifieds.each do |classified| %>
+      <p><%= link_to classified.title, classified %></p>
+    <% end %>
+  </div>
+
+  <div class="col">
+    <h1>Categories</h1>
+    <% @categories.each do |category| %>
+      <p><%= link_to category.name, category %></p>
+    <% end %>
+  </div>
+</div>
+

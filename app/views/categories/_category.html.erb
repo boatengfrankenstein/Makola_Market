@@ -1,0 +1,4 @@
+<li id="category_<%= category.id %>"> 
+<%= link_to category.name, :action => 'show', :id => category.id %> 
+<%= "(#{category.classifieds.count})" -%><small><%= link_to 'Delete',:url => {:action => 'delete', :id => category} -%></small> 
+</li> 
