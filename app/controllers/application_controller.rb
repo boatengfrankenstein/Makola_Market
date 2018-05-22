@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   # redirect to dashboard index after
   # devise sign in
   def after_sign_in_path_for(resource)
-    dashboard_index_path
+    classifieds_path
   end
 
   # redirect to session new after
