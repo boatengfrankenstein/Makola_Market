@@ -27,7 +27,7 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
 
@@ -45,44 +45,10 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  config.action_mailer.perform_deliveries = true
-
-
-
-
-
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
-  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
-  # Default url options when generating urls for action mailer
-  config.action_mailer.default_url_options = { host: 'saharamarket.herokuapp.com' }
-
-  # Email delivery method
-  config.action_mailer.delivery_method = :smtp
-
-  config.action_mailer.smtp_settings = {
-    :address              => "smtp.sendgrid.net",
-    :port                 => 587,
-    :domain               => 'saharamarket.herokuapp.com',
-    :user_name            => 'app97172692@heroku.com',
-    :password             => 'adkyy5op2411',
-    :authentication       => :plain,
-    :enable_starttls_auto => true  }
-
-  # SES Email configuration
-=begin  
-  config.action_mailer.smtp_settings = {
-    address: ENV['SMTP_ENDPOINT'],
-    authentication: :login,
-    user_name: ENV['SMTP_USERNAME'],
-    password: ENV['SMTP_PASSWORD'],
-    tls: true,
-    enable_starttls_auto: true,
-    port: ENV['SMTP_PORT']
-  }
-=end  
+  # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end

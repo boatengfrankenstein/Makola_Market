@@ -54,7 +54,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "devise-omniauth_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "devise_omniauth_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
@@ -74,23 +74,6 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
-
-
-  # Default url options when generating urls for action mailer
-  config.action_mailer.default_url_options = { host: 'saharamarket.herokuapp.com' }
-
-  # Email delivery method
-  config.action_mailer.delivery_method = :smtp
-
-  config.action_mailer.smtp_settings = {
-    :address              => "smtp.sendgrid.net",
-    :port                 => 587,
-    :domain               => 'saharamarket.herokuapp.com',
-    :user_name            => 'app97172692@heroku.com',
-    :password             => 'adkyy5op2411',
-    :authentication       => :plain,
-    :enable_starttls_auto => true  }
-
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)

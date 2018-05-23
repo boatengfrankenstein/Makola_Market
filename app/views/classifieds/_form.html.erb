@@ -1,4 +1,4 @@
-<%= form_with(model: classified, local: true) do |form| %>
+<%= form_for(classified) do |form| %>
   <% if classified.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(classified.errors.count, "error") %> prohibited this classified from being saved:</h2>
@@ -40,6 +40,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "Create" %>
+    <%= form.submit %>
   </div>
 <% end %>
