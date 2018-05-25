@@ -1,12 +1,30 @@
+
+<%= stylesheet_link_tag "application", "jquery-ui" %>  
+<%= javascript_include_tag :defaults, "jquery-ui.min", "autocomplete-rails" %>
 <p id="notice"><%= notice %></p>
 
-<ul class="list-group" id="categories"> 
-<%  @categories.each do |c| %> 
+   <%= render partial: "layouts/navbar" %>
+<% if user_signed_in? %>
+  Logged in as <strong><%= current_user.email %></strong>.
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+<% end %>
+<%= form_tag(classifieds_path, :method => "get", id: "search-form") do %>
+   <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "search for ad", type: "search", data: {autocomplete: classifieds_autocomplete_classified_title_path} %>
+    <%= submit_tag "Search"%>
+<% end %>
+<script type="text/javascript" charset="utf-8">
+  $('#search').bind('railsAutocomplete.select', function(event, data){
+  $('#search-form').submit()
+  });
+</script>
 
-<li class="list-group-item d-flex justify-content-between align-items-center">  <%= link_to c.name , :controller=>'categories',:action =>  'show', :id => c.id %></li> <br/> 
+<ul class="list-group" id="categories">
+<%  @categories.each do |c| %>
 
-  <% end %> 
-</ul> 
+<li class="list-group-item d-flex justify-content-between align-items-center">  <%= link_to c.name , :controller=>'categories',:action =>  'show', :id => c.id %></li> <br/>
+
+  <% end %>
+</ul>
 
 
 
@@ -18,19 +36,19 @@
   </thead>
 
   <tbody>
-    <% if @classifieds.blank? %> 
-  <p>There are not any ads currently in the system.</p> 
-<% else %> 
-  <p>These are the current classified ads in our system</p> 
+    <% if @classifieds.blank? %>
+  <p>There are not any ads currently in the system.</p>
+<% else %>
+  <p>These are the current classified ads in our system</p>
 
-    <% @classifieds.each do |c| %> 
+    <% @classifieds.each do |c| %>
     <tr>
       <td><%= link_to c.title, classified_url(:id => c.id) -%></td>
       <td>  <small> <%= link_to 'Edit', {:action => "edit", :id => c.id} %></small></td>
       <td>  <small><%= link_to 'delete', c, method: :delete, data: { confirm: 'Are you sure?' } %></small> </td>
-    <% end %> 
-  </tr> 
-<% end %> 
+    <% end %>
+  </tr>
+<% end %>
   </tbody>
 </table>
 

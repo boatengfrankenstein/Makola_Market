@@ -6,7 +6,8 @@ Rails.application.routes.draw do
  resources :classifieds
  root 'classifieds#index'
 
- 
+ get :search, controller: :classifieds
+ get 'classifieds/autocomplete_classified_title'
  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth' }
 
   

@@ -25,6 +25,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'sendgrid-ruby'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -33,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -51,10 +52,15 @@ gem 'omniauth-twitter', '~> 1.2', '>= 1.2.1'
 gem 'activerecord-session_store', '~> 1.0'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'ransack', '~> 1.8', '>= 1.8.2'
+gem 'rails-jquery-autocomplete'
+gem 'rails4-autocomplete'
+gem 'acts-as-taggable-on'
+gem 'rails3-jquery-autocomplete'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
+
 
 gem 'pg', '~> 0.21'
 

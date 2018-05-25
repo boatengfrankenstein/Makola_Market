@@ -5,6 +5,7 @@ class User < ApplicationRecord
             :recoverable, :rememberable, :trackable, :validatable,
             :confirmable, :lockable, :timeoutable,
             :omniauthable, omniauth_providers: [:facebook, :github, :google_oauth2, :twitter]
+            has_many :classifieds 
 
   def self.create_from_facebook_data(facebook_data)
     where(provider: facebook_data.provider, uid: facebook_data.uid).first_or_create do | user |
