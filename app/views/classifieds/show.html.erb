@@ -14,7 +14,7 @@
   <strong>Location:</strong>
   <%= @classified.location %>
 </p>
-<%= debug @classified %>
+
 
 <strong>Category: </strong> <%= link_to @classified.category.name,:controller =>'categories', :action => 'show', :id=>@classified.category.id%><br/> 
 
@@ -25,7 +25,8 @@
 
 <p>
   <strong>Email:</strong>
-  <%= @classified.email %>
+ 
+ <%= link_to @user.email,:controller =>'sellers', :action => 'show',  :id=>@user.id%><br/> 
 </p>
 <p>
 <strong>Date Posted:</strong>
@@ -38,6 +39,7 @@
 Contact <%= mail_to @classified.email %></p>
 
 
+<strong>Category: </strong> <%= link_to @classified.category.name,:controller =>'categories', :action => 'show', :id=>@classified.category.id%><br/> 
 
 
 

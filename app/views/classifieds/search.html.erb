@@ -1,16 +1,24 @@
-<div class="row">
-  <div class="col">
-    <h1>Classifieds</h1>
-    <% @classifieds.each do |classified| %>
-      <p><%= link_to classified.title, classified %></p>
-    <% end %>
-  </div>
 
-  <div class="col">
-    <h1>Categories</h1>
-    <% @categories.each do |category| %>
-      <p><%= link_to category.name, category %></p>
-    <% end %>
-  </div>
-</div>
+<section class="search-results">
 
+  <header>
+    <h1 class="h3">Classifieds </h1>
+  </header>
+
+  <ol class="list-group">
+    <% if @classifieds.blank? %>
+  <p>No item found</p>
+<% else %>
+  <p>These are the current classified ads in our system</p>
+
+    <% @classifieds.each do |c| %>
+    <li class="list-group-item">
+      <h4><%= link_to c.title, classified_url(:id => c.id) -%></h3>
+      <h4>  <small> <%= link_to 'Edit', {:action => "edit", :id => c.id} %></small></h4>
+      <h4>  <small><%= link_to 'delete', c, method: :delete, data: { confirm: 'Are you sure?' } %></small> </h4>
+     </li>
+    <% end %>
+ </ol>
+<% end %>
+ 
+</section>

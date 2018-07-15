@@ -1,59 +1,61 @@
 class ClassifiedsController < ApplicationController
   before_action :set_classified, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  autocomplete :classified, :full => true
-  
-  PAGE_SIZE = 10
-  # GET /items
-  # GET /items.json
+  # GET /classifieds
+  # GET /classifieds.json
   def index
     @classifieds = Classified.all
     @categories = Category.all
-
-    @page = (params[:page] || 0).to_i
-    if params[:search].present?
-      @keywords = params[:search]
-      classified_search_term = ClassifiedSearchTerm.new(@keywords)
-      @classifieds = Classified.where(
-        classified_search_term.where_clause,
-        classified_search_term.where_args).
-        order(classified_search_term.order).
-        offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
-    else
-
-    end
+    @users =User.all
 
   end
 
-  # GET /items/1
-  # GET /items/1.json
+  # GET /classifieds/1
+  # GET /classifieds/1.json
   def show
-    @classified = Classified.find(params[:id])
-    rescue ActiveRecord::RecordNotFound => e
+      
+   @classified = Classified.find(params[:id]) 
+  
+@user  = User.find(@classified.user_id)
+  
+   rescue ActiveRecord::RecordNotFound => e
+
   end
 
-  # GET /items/new
+  # GET /classifieds/new
   def new
     @classified = Classified.new
   end
 
-  # GET /items/1/edit
+  # GET /classifieds/1/edit
   def edit
   end
 
+
   def search
+  #  if params[:keywords].present?
+    #@keywords = params[:keywords]
+    @classifieds = Classified.ransack(title_cont: params[:q]).result(distinct: true).limit(5)
+    @categories = Category.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
+   
+    respond_to do |format|
+      format.html {}
+      format.json {
+        @classifieds = @classifieds.limit(5)
+        @categories = @categories.limit(5)
+      }
+    end
+   
+end
 
-  end
-
-private
+private 
 def force_json
   request.format = :json
 end
-  # POST /items
-  # POST /items.json
+  # POST /classifieds
+  # POST /classifieds.json
   def create
     @classified = Classified.new(classified_params)
-    @classified.user_id = current_user.id
     respond_to do |format|
       if @classified.save
         format.html { redirect_to @classified, notice: 'Classified was successfully created.' }
@@ -65,8 +67,8 @@ end
     end
   end
 
-  # PATCH/PUT /items/1
-  # PATCH/PUT /items/1.json
+  # PATCH/PUT /classifieds/1
+  # PATCH/PUT /classifieds/1.json
   def update
     respond_to do |format|
       if @classified.update(classified_params)
@@ -79,20 +81,8 @@ end
     end
   end
 
-  def search
-    @classifieds = Classified.ransack(title_cont: params[:q]).result(distinct: true).limit(5)
-    @categories = Category.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
-    respond_to do |format|
-      format.html {}
-      format.json {
-        @classifieds = @classifieds.limit(5)
-        @categories = @categories.limit(5)
-      }
-    end
-end
-
-  # DELETE /items/1
-  # DELETE /items/1.json
+  # DELETE /classifieds/1
+  # DELETE /classifieds/1.json
   def destroy
     @classified.destroy
     respond_to do |format|
@@ -107,13 +97,26 @@ end
       @classified = Classified.find(params[:id])
     end
 
-    def show_category
-      @category = Category.find(params.fetch[:id])
-      logger.debug "New post: #{@category.attributes.inspect}"
+
+    def show_category 
+      @category = Category.find(params.fetch[:id]) 
+      logger.debug "New post: #{  @category.attributes.inspect}"
       logger.debug "Post should be valid: #{@category.valid?}"
     end
+
+    def show_seller
+ 
+    end
+
+    def contact
+      @classified = Classified.find(params[:id])
+      ClassifiedMailer.deliver_contact(@classified,params[:contact])
+      return if request.xhr?
+      render :nothing => true
+      end
+      
     # Never trust parameters from the scary internet, only allow the white list through.
     def classified_params
-      params.require(:classified).permit(:title, :price, :location, :description, :email, :category_id)
-      end
+    params.require(:classified).permit(:title, :price, :location, :description, :email, :category_id)
+    end
 end

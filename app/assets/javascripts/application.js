@@ -9,11 +9,22 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
+//= require masonry/jquery.masonry
+
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.turbolinks
 //= require jquery-ui
+//= require bootstrap-sprockets 
+//= require bootstrap 
 //= require autocomplete-rails
+//= require angular
+//= require angular-route
+//= require angular-rails-templates
+//= require angular-resource
+//= require angular-messages
+//= require_tree ./templates
 //= require jquery.easy-autocomplete
 //= require_tree .

@@ -28,6 +28,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
+gem 'jquery-turbolinks' 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -56,12 +57,15 @@ gem 'rails-jquery-autocomplete'
 gem 'rails4-autocomplete'
 gem 'acts-as-taggable-on'
 gem 'rails3-jquery-autocomplete'
+gem "angular-rails-templates"
+gem "sprockets", "~> 3.7.1"
+gem 'masonry-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
 
-
+gem 'bower-rails'
 gem 'pg', '~> 0.21'
 
 group :development do

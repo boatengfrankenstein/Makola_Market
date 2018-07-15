@@ -16,6 +16,7 @@ include Faker
       description: Faker::Lorem.sentence,
       email: Faker::Internet.email,
       category_id: Faker::Number.between(1,11),
-      user_id:Faker::Number.between(1,3)
+      user_id:Faker::Number.between(1,3),
+      image_url:"1.jpg"
      )
      end
