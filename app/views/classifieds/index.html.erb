@@ -6,20 +6,40 @@
   Logged in as <strong><%= current_user.email %></strong>.
   <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
 <% end %>
-
-<div id="masonry-container" class="centered "> 
+<div class="container-fluid">
+<div id="masonry-container" > 
    
        <% @classifieds.each do |pin| %>   
-         <div class="box col4"> 
+         <div class="box col3"> 
          <p> <%= link_to image_tag(pin.image_url) %> </p>  
-     <div class="post-info">
-			        		<div class="post-basic-info">
-				        		<p><h3><label><%= pin.title %></h3></p>
-			        		</div>
-			        		
-			        	</div>                    
+     
+<!-- card content -->
+ <div class="card-body card-body-cascade text-center">
+       
+          <!-- Description -->
+          <p class="card-text"><%= pin.title %></p>
+           <p class="card-meta"><small><%= pin.location %></small></p>
+          <!-- Card footer -->
+          <div class="card-footer px-1">
+          
+            <span class="float-left font-weight-bold">
+              <strong>$</strong><strong><%= pin.price %></strong>
+            </span>
+          
+            <span class="float-right">
+              <a class="" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                <i class="fa fa-heart grey-text ml-3"></i>
+              </a>
+            </span>
+          </div>
+        </div>
+        <!-- Card content -->
+<!-- end card content -->
+
+
        </div> 
   
 <% end %>     
 
+</div>
 </div>

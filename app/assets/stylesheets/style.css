@@ -59,7 +59,7 @@ body{
 }
 .top-searchbar {
 	float: left;
-	width: 46%;
+	width: 50%;
 	position: relative;
 	margin-left: 2em;
 }
@@ -100,20 +100,7 @@ body{
 	outline:none;
 	cursor:pointer;
 }
-.boxnav{
-	position:absolute;
-	top:-100px;
-	width:100%;
-	color:#ffffff;
-	margin:auto;
-	padding:0px;
-	z-index:999999;
-	text-align:center;
-	left:0px;
- }
-.boxnav_content_center{
-	background: #ffffff;
-}
+
 a.boxclose{
 	cursor: pointer;
 	text-align: center;
